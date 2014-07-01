@@ -1,0 +1,55 @@
+{
+  "name": "flow-covariance",
+  "version": "0.0.2",
+  "description": "Reduce transform stream which calculates the covariance of streamed numeric data.",
+  "author": {
+    "name": "Athan Reines",
+    "email": "athan@nodeprime.com"
+  },
+  "contributors": [
+    {
+      "name": "Athan Reines",
+      "email": "athan@nodeprime.com"
+    }
+  ],
+  "scripts": {
+    "test": "mocha"
+  },
+  "main": "./lib",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/kgryte/flow-covariance.git"
+  },
+  "keywords": [
+    "stream",
+    "writable",
+    "readable",
+    "transform",
+    "flow",
+    "flow.io",
+    "covariance",
+    "variance",
+    "multivariate",
+    "reduce",
+    "statistics",
+    "stats"
+  ],
+  "bugs": {
+    "url": "https://github.com/kgryte/flow-covariance/issues"
+  },
+  "dependencies": {
+    "stream-combiner": "~0.2.0",
+    "flow-reduce": "~0.0.0",
+    "flow-map": "~0.0.0"
+  },
+  "devDependencies": {
+    "mocha": "1.x.x",
+    "chai": "1.x.x"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://www.opensource.org/licenses/MIT"
+    }
+  ]
+}
