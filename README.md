@@ -14,15 +14,12 @@ $ npm install flow-covariance
 ## Examples
 
 ``` javascript
-var // Flow covariance stream generator:
+var eventStream = require( 'event-stream' ),
 	cStream = require( 'flow-covariance' );
 
-var data = new Array( 1000 ),
-	value,
-	stream;
-
 // Create some data... (negatively corrrelated)
-for ( var i = 0; i < 1000; i++ ) {
+var data = new Array( 1000 ), value;
+for ( var i = 0; i < data.length; i++ ) {
 	value = Math.random() * 50;
 	data[ i ] = {
 		'y1': 50 + value,
@@ -30,8 +27,11 @@ for ( var i = 0; i < 1000; i++ ) {
 	}
 }
 
+// Create a readable stream:
+var readStream = eventStream.readArray( data );
+
 // Create a new stream:
-stream = cStream()
+var stream = cStream()
 	.accessors( 'y1', function( d ) {
 		return d.y1;
 	})
@@ -40,16 +40,10 @@ stream = cStream()
 	})
 	.stream();
 
-// Add a listener:
-stream.on( 'data', function( covar ) {
-	console.log( 'Covariance: ' + JSON.stringify( covar ) );
-});
-
-// Write the data to the stream...
-for ( var j = 0; j < data.length; j++ ) {
-	stream.write( data[ j ] );
-}
-stream.end();
+// Create a pipeline:
+readStream.pipe( stream )
+	.pipe( eventStream.stringify() )
+	.pipe( process.stdout );
 ```
 
 ## Tests
