@@ -1,6 +1,6 @@
 {
   "name": "flow-covariance",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Reduce transform stream which calculates the covariance of streamed numeric data.",
   "author": {
     "name": "Athan Reines",
